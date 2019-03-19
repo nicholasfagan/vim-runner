@@ -236,7 +236,7 @@ function! runner#Run() abort
             execute "MarkdownPreview"
         endtry
 		elseif b:ft ==# 'tex'
-			silent execute '!if [[ $(ps a | grep -c "zathura %:r.pdf") -le 1  ]]; then zathura %:r.pdf & fi'
+			silent execute '!pgrep zathura || zathura %:r.pdf &'
     endif
 endfunction
 
