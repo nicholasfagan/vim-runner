@@ -236,7 +236,7 @@ function! runner#Run() abort
             execute "MarkdownPreview"
         endtry
 		elseif b:ft ==# 'tex'
-			silent execute 'zathura %:r.pdf &'
+			silent execute '!zathura %:r.pdf &'
     endif
 endfunction
 
