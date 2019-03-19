@@ -1,5 +1,12 @@
 # Runner
 
+**Forked from aben20807/vim-runner**
+
+I needed a script to organize my
+compilation commands, and this was it.
+Changes made so far are adding tex doc support.
+This fork just adds a personal touch.
+
 ![gif](https://imgur.com/bSnBCD6.gif)
 
 ## 1. Installation

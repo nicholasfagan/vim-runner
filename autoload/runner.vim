@@ -55,7 +55,7 @@ function! runner#SetUpFiletype(filetype) abort
         let b:supported = 1
         return
     endif
-    if b:ft ==# 'c' || b:ft ==# 'cpp' || b:ft ==# 'python' || b:ft == 'lisp'
+    if b:ft ==# 'c' || b:ft ==# 'cpp' || b:ft ==# 'python' || b:ft == 'lisp' || b:ft ==# 'tex'
         let b:supported = 1
         return
     endif
@@ -99,7 +99,7 @@ function! runner#DoAll() abort
         call runner#Run()
         call runner#After()
     else
-        call runner#ShowInfo("   ❖  不支援  ❖ ")
+        call runner#ShowInfo("   ❖ Unsuported Filetype ❖ ")
     endif
 endfunction
 
@@ -169,6 +169,8 @@ function! runner#Compile() abort
         endif
     elseif b:ft ==# 'python'
     elseif b:ft ==# 'lisp'
+		elseif b:ft ==# 'tex'
+			silent execute "! pdflatex % >%:r.pdf"
     endif
 endfunction
 
@@ -233,6 +235,8 @@ function! runner#Run() abort
         catch /^Vim:E492:/
             execute "MarkdownPreview"
         endtry
+		elseif b:ft ==# 'tex'
+			silent execute 'zathura %:r.pdf &'
     endif
 endfunction
 
@@ -254,6 +258,8 @@ function! runner#After() abort
                     \ b:tmp_dir .
                     \ b:tmp_name .
                     \ ".out"
+		elseif b:ft ==# 'tex'
+			silent execute "!rm -f %:r.log %:r.aux"
     endif
     if g:runner_is_with_ale
         let g:ale_enabled = b:runner_ale_status
