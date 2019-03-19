@@ -170,7 +170,7 @@ function! runner#Compile() abort
     elseif b:ft ==# 'python'
     elseif b:ft ==# 'lisp'
 		elseif b:ft ==# 'tex'
-			silent execute "! pdflatex % >%:r.pdf"
+			silent execute "!pdflatex %"
     endif
 endfunction
 
