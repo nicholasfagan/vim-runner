@@ -171,6 +171,7 @@ function! runner#Compile() abort
     elseif b:ft ==# 'lisp'
 		elseif b:ft ==# 'tex'
 			silent execute "!pdflatex %"
+			silent execute "redraw!"
     endif
 endfunction
 
